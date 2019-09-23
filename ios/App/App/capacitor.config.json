@@ -1,0 +1,11 @@
+{
+  "appId": "com.dmbajaj2498.showcase",
+  "appName": "ShortRentals",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "url": "http://localhost:8103",
+    "originalUrl": "http://localhost:8102"
+  }
+}

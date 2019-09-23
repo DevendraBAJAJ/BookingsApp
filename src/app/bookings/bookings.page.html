@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Your Bookings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="isLoading">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3" text-center>
+        <ion-spinner color="primary"></ion-spinner>
+      </ion-col>
+    </ion-row>    
+  </ion-grid>
+  <ion-grid *ngIf="!isLoading && (!loadedBookings || loadedBookings.length <= 0)">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3" text-center>
+        <p>You don't have any current bookings !!</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="!isLoading && loadedBookings.length > 0">
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <ion-list>
+            <ion-item-sliding *ngFor="let booking of loadedBookings" #slidingBookingItem>
+            <ion-item>
+              <ion-avatar slot="start">
+                <ion-img [src]="booking.placeImage"></ion-img>
+              </ion-avatar>
+              <ion-label>
+                <h5>{{ booking.placeTitle }}</h5>
+                <p>Guests: {{ booking.guestNumber }}</p>
+              </ion-label>
+            </ion-item>
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="onCancelBooking(booking.id, slidingBookingItem)">
+                <ion-icon name="trash" slot="icon-only"></ion-icon>
+              </ion-item-option>
+            </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

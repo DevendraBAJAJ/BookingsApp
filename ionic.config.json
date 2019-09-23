@@ -1,5 +1,7 @@
 {
   "name": "MyIonicAngularProject",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }
